@@ -3,7 +3,7 @@
 ## Stack:
 - ReactJS + Hooks
 - React Router
-- Redux
+- Redux/Toolkit
 - Redux thunk
 - json-server
 - Axios
