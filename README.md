@@ -1,4 +1,4 @@
-#Online pizza ordering shop - React Pizza
+# Online pizza ordering shop - React Pizza
 
 ## Stack:
 - ReactJS + Hooks
