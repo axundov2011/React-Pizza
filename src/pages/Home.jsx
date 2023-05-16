@@ -1,15 +1,7 @@
 //hooklar
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useRef,
-  useCallback,
-} from "react";
-
+import React, { useEffect, useRef, useCallback } from "react";
 //Api paketi
 import axios from "axios";
-
 //Componentler
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -18,8 +10,6 @@ import { sortList } from "../components/Sort";
 //skeleton
 import Skeleton from "../components/PizzaBlok/Skleteton";
 import { Pagination } from "../components/Pagination";
-
-
 //Redux
 // import {selectFilter} from "../redux/filter/selection"
 import { useDispatch, useSelector } from "react-redux";
@@ -42,7 +32,7 @@ const Home = () => {
   const { categoryId, sort, currentPage, searchValue } = useSelector(
     (state) => state.filter
   );
- 
+
   const onChangeCategoryType = useCallback((id) => {
     dispatch(setCategoryId(id));
   });
@@ -110,7 +100,11 @@ const Home = () => {
     isSearch.current = false;
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-  const pizzas = items.map((datas) => <Link key={datas.id} to={`pizza/${datas.id}`}><PizzaBlok  {...datas} /></Link>);
+  const pizzas = items.map((datas) => (
+    <Link key={datas.id} to={`pizza/${datas.id}`}>
+      <PizzaBlok {...datas} />
+    </Link>
+  ));
 
   const Skeletons = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
@@ -132,10 +126,11 @@ const Home = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === "error" ? (
-        <div className="content_error-info"> 
-          <h2 >Pроизашло  ошибка 😕</h2>
+        <div className="content_error-info">
+          <h2>Pроизашло ошибка 😕</h2>
           <p>
-          К сожалению, не удалось  получить питсы.Попробуйты повторить  попытку позже
+            К сожалению, не удалось получить питсы.Попробуйты повторить попытку
+            позже
           </p>
         </div>
       ) : (
